@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
       debugShowCheckedModeBanner: false,
       home: StreamBuilder(
-        stream: FirebaseAuth.instance.userChanges(), 
+        stream: FirebaseAuth.instance.authStateChanges(), 
         builder: (context, snapshot){
           if(snapshot.connectionState == ConnectionState.waiting){
             return Center(child: CircularProgressIndicator());
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           }
         }
       ),
-      // home: const SignUpPage(),
+      // home: const Home(),
     );
   }
 }
