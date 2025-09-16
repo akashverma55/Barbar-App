@@ -1,5 +1,5 @@
-import 'package:firebase_app/home.dart';
-import 'package:firebase_app/signup.dart';
+import 'package:firebase_app/Screen/home.dart';
+import 'package:firebase_app/Screen/signup.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -69,7 +69,7 @@ class _SignInPageState extends State<SignInPage> {
             constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: Color(0xFF2b1615),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Form(
@@ -83,7 +83,7 @@ class _SignInPageState extends State<SignInPage> {
                     style: TextStyle(
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue[900],
+                      color: Color(0xFFb4817e),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -139,12 +139,23 @@ class _SignInPageState extends State<SignInPage> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 5),
+                  Row(mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          
+                        },
+                        child: Text("Forgot Password?",style: TextStyle(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.white)),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 30),
                   ElevatedButton(
                     onPressed: _isLoading ? null : _signIn,
                     style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
-                      backgroundColor: Colors.blue[600],
+                      backgroundColor: Color(0xFFb4817e),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -157,7 +168,7 @@ class _SignInPageState extends State<SignInPage> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                   ),
@@ -168,7 +179,7 @@ class _SignInPageState extends State<SignInPage> {
                     },
                     child: const Text(
                       'Don\'t have an account? Sign Up',
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(color: Color(0xFFb4817e)),
                     ),
                   ),
                 ],

@@ -1,7 +1,10 @@
-import 'package:firebase_app/home.dart';
-import 'package:firebase_app/signin.dart';
+import 'package:firebase_app/Data/database.dart';
+import 'package:firebase_app/Data/shared.dart';
+import 'package:firebase_app/Screen/home.dart';
+import 'package:firebase_app/Screen/signin.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:random_string/random_string.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -11,6 +14,7 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  //-------------- Variables ------------------//
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -18,6 +22,7 @@ class _SignUpPageState extends State<SignUpPage> {
   bool _isLoading = false;
   bool _isObscure = true;
 
+  //-------------- Dispose Method ------------------//
   @override
   void dispose() {
     _nameController.dispose();
@@ -26,13 +31,19 @@ class _SignUpPageState extends State<SignUpPage> {
     super.dispose();
   }
 
+
+  //-------------- SignUp Function ------------------//
   Future<void> _signUp() async {
     if (_formKey.currentState?.validate() ?? false) {
+
+  //-------------- Is Loading ------------------//
       setState(() {
         _isLoading = true;
       });
 
+      //-------------- Sign up Success ------------------//
       try {
+        //-------------- Authentication ------------------//
         final userCredential = await FirebaseAuth.instance
             .createUserWithEmailAndPassword(
               email: _emailController.text.trim(),
@@ -40,20 +51,45 @@ class _SignUpPageState extends State<SignUpPage> {
             );
         print(userCredential.user?.uid);
 
+        //-------------- Randomly Generated Id ------------------//
+        String id = randomAlphaNumeric(10);
+
+        //-------------- Locally Saving Data ------------------//
+        await Shared().saveUserId(id);
+        await Shared().saveUserName(_nameController.text.trim());
+        await Shared().saveUserEmail(_emailController.text.trim());
+        await Shared().saveUserImage("https://th.bing.com/th/id/OIP.oKuAQ4Z7v5FWK0JmqoMnUAHaHa?w=137&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3");
+
+        //-------------- User Information Map ------------------//
+        Map<String,dynamic> UserInfoMap = {
+          "Name": _nameController.text.trim(),
+          "Email": _emailController.text.trim(),
+          "Id": id,
+          "Image": "https://th.bing.com/th/id/OIP.oKuAQ4Z7v5FWK0JmqoMnUAHaHa?w=137&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
+        };
+
+        //-------------- Storing the Data in Firestore ------------------//
+        await Database().addUserDetails(UserInfoMap, id);
+
+        //-------------- Pop-Up message ------------------//
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text("Signup Successfull")));
+
+        //-------------- Navigate to the HomePage ------------------//
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(builder: (context) => Home()),
         );
-
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text("Signup Successfull")));
-      } on FirebaseAuthException catch (e) {
+      } 
+      //-------------- Sign Up Error ------------------//
+      on FirebaseAuthException catch (e) {
         ScaffoldMessenger.of(
           context,
         ).showSnackBar(SnackBar(content: Text(e.message!)));
       }
 
+      //-------------- Loading Ended ------------------//
       setState(() {
         _isLoading = false;
       });
@@ -70,7 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
             constraints: const BoxConstraints(maxWidth: 400),
             padding: const EdgeInsets.all(24.0),
             decoration: BoxDecoration(
-              color: Colors.black,
+              color: Color(0xFF2b1615),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Form(
@@ -84,7 +120,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue[900],
+                      color: Color(0xFFb4817e),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -163,7 +199,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     onPressed: _isLoading ? null : _signUp,
                     style: ElevatedButton.styleFrom(
                       padding: EdgeInsets.symmetric(vertical: 16),
-                      backgroundColor: Colors.blue[600],
+                      backgroundColor: Color(0xFFb4817e),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(Radius.circular(12)),
                       ),
@@ -176,7 +212,7 @@ class _SignUpPageState extends State<SignUpPage> {
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.white,
+                              color: Colors.black,
                             ),
                           ),
                   ),
@@ -190,7 +226,7 @@ class _SignUpPageState extends State<SignUpPage> {
                     },
                     child: const Text(
                       "Already Have An Account? Login",
-                      style: TextStyle(color: Colors.blue),
+                      style: TextStyle(color: Color(0xFFb4817e)),
                     ),
                   ),
                 ],

@@ -1,6 +1,7 @@
-import 'package:firebase_app/firebase_options.dart';
-import 'package:firebase_app/home.dart';
-import 'package:firebase_app/signin.dart';
+import 'package:firebase_app/Screen/booking.dart';
+import 'package:firebase_app/utils/firebase_options.dart';
+import 'package:firebase_app/Screen/home.dart';
+import 'package:firebase_app/Screen/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,23 +22,23 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.black),
+      theme: ThemeData.dark().copyWith(scaffoldBackgroundColor: Color(0xFF2b1615)),
       debugShowCheckedModeBanner: false,
-      home: StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(), 
-        builder: (context, snapshot){
-          if(snapshot.connectionState == ConnectionState.waiting){
-            return Center(child: CircularProgressIndicator());
-          }else if(snapshot.hasData){
-            return Home();
-          }else if(snapshot.hasError){
-            return Center(child: Text("Something went wrong"));
-          }else{
-            return SignInPage();
-          }
-        }
-      ),
-      // home: const Home(),
+      // home: StreamBuilder(
+      //   stream: FirebaseAuth.instance.authStateChanges(), 
+      //   builder: (context, snapshot){
+      //     if(snapshot.connectionState == ConnectionState.waiting){
+      //       return Center(child: CircularProgressIndicator());
+      //     }else if(snapshot.hasData){
+      //       return Home();
+      //     }else if(snapshot.hasError){
+      //       return Center(child: Text("Something went wrong"));
+      //     }else{
+      //       return SignInPage();
+      //     }
+      //   }
+      // ),
+      home: const SignInPage(),
     );
   }
 }
