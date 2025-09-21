@@ -1,3 +1,5 @@
+import 'package:firebase_app/Admin/AdminHome.dart';
+import 'package:firebase_app/Admin/AdminLogin.dart';
 import 'package:firebase_app/Screen/booking.dart';
 import 'package:firebase_app/utils/firebase_options.dart';
 import 'package:firebase_app/Screen/home.dart';
@@ -38,7 +40,7 @@ class MyApp extends StatelessWidget {
       //     }
       //   }
       // ),
-      home: const SignInPage(),
+      home: const Home(),
     );
   }
 }

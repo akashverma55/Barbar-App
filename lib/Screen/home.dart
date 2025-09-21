@@ -1,9 +1,7 @@
 import 'package:firebase_app/Data/shared.dart';
 import 'package:firebase_app/Screen/booking.dart';
-import 'package:firebase_app/Screen/signin.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_app/utils/data.dart';
+import 'package:firebase_app/Data/data.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
