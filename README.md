@@ -79,15 +79,69 @@ Admin “Done” deletes the corresponding document by ID.
 
 ## Screenshots
 
-<p align="center">
-  <img src="ScreenImages/AdminHome.png" alt="Admin Home" width="100" />
-  <img src="ScreenImages/AdminLogin.png" alt="Admin Login" width="100" />
-  <img src="ScreenImages/AdminNoBooking.png" alt="Admin No Booking" width="100" />
-  <img src="ScreenImages/UserHome.png" alt="User Home" width="100" />
-  <img src="ScreenImages/UserSignIn.png" alt="User Sign In" width="100" />
-  <img src="ScreenImages/UserSihnUp.png" alt="User Sign Up" width="100" />
-  <img src="ScreenImages/UserBooking.png" alt="User Booking" width="100" />
-</p>
+<table style="border: none;">
+  <tr>
+    <td align="center" style="border: none; padding: 10px;">
+      <img src="ScreenImages/UserSignIn.png" alt="User SignIn Page" width="150" />
+      <br />
+      Admin Home
+    </td>
+    <td align="center" style="border: none; padding: 10px;">
+      <img src="ScreenImages/UserSignUp.png" alt="User SignUp Page" width="150" />
+      <br />
+      Admin Login
+    </td>
+    <td align="center" style="border: none; padding: 10px;">
+      <img src="ScreenImages/UserHome.png" alt="User Home Page" width="150" />
+      <br />
+      Admin No Booking
+    </td>
+    <td align="center" style="border: none; padding: 10px;">
+      <img src="ScreenImages/UserBooking.png" alt="User Booking Page" width="150" />
+      <br />
+      User Home
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="border: none; padding: 10px;">
+      <img src="ScreenImages/AdminLogin.png" alt="Admin Login Page" width="150" />
+      <br />
+      User Sign In
+    </td>
+    <td align="center" style="border: none; padding: 10px;">
+      <img src="ScreenImages/AdminHome.png" alt="Admin Home page" width="150" />
+      <br />
+      User Sign Up
+    </td>
+    <td align="center" style="border: none; padding: 10px;">
+      <img src="ScreenImages/AdminNoBooking.png" alt="Admin Home Page With No Booking" width="150" />
+      <br />
+      User Booking
+    </td>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+  </tr>
+  <tr>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+  </tr>
+  <tr>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+    <td align="center" style="border: none; padding: 10px;">
+      </td>
+  </tr>
+</table>
 
 ## Notes
 
