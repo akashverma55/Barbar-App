@@ -76,7 +76,7 @@ class _BookingState extends State<Booking> {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Service has been booked successfully!!!")));
     });
 
-    Navigator.push(context, MaterialPageRoute(builder: (context)=> Home()));
+    Navigator.pop(context);
   }
 
   @override
